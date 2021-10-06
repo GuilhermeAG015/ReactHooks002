@@ -1,28 +1,33 @@
-import React from "react";
-import Forms from "./components/Forms/Forms";
-import {Container, Typography } from "@material-ui/core"
-import 'fontsource-roboto';
+import Forms from './components/Forms/Forms';
+import './styles/App.css';
 
-import './App.css';
+import { Container, Typography } from '@material-ui/core'
+import 'fontsource-roboto'
 
 function App() {
   return (
-    <Container component="article" maxWidth="sm">
-      <Typography variant="h3" component="h1" align="center" >Formulário de cadastro</Typography>
-      <Forms OnSubmitForm={OnSubmitForm} CpfIsValid={CpfIsValid} />
+    <Container component='article' maxWidth='sm'>
+      <Typography 
+        variant='h3' 
+        component='h1' 
+        align='center'
+        >
+          Formulario de Cadastro</Typography>
+      <Forms OnTheSubmit={OnSubmit} cpfIsValid={cpfIsValid}/>
     </Container>
-    );
+  );
 }
 
-function OnSubmitForm(dados){
-  console.log(dados);
+function OnSubmit(data) {
+  console.log(data)
 }
 
-function CpfIsValid(cpf){
+function cpfIsValid(cpf) {
   if(cpf.length !== 11){
-    return {valido:false, texto:"CPF deve ter 11 digitos."}
-  }else{
-    return {valido:true, texto:""}
+    return {isValid:false, text: "CPF deve ter 11 digitos"}
+  }
+  else{
+    return{isValid: true, text: ""}
   }
 }
 
